@@ -24,7 +24,7 @@ export class FormComponent implements OnInit {
 
 
   chatForm = new FormGroup({
-    text: new FormControl(null, [Validators.pattern('[A-Z]+'), Validators.required])
+    text: new FormControl(null, Validators.required)
   });
 
   @Input()
@@ -36,9 +36,9 @@ export class FormComponent implements OnInit {
   }
 
   sendMessage(text: string) {
-    const msg: Message = new Message(text, new Date(), this.user);
+    const msg: Message = new Message(null, text, new Date(), this.user);
     console.log(msg);
-    this.messagesService.sendMessage(msg);
+    this.messagesService.sendMessage(msg).subscribe(message => console.log(message));
   }
 
 }

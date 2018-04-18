@@ -24,12 +24,13 @@ import {MessagesService} from '../services/messages.service';
 })
 export class MessagesComponent implements OnInit {
 
-  messages:Message[];
+  messages: Message[];
 
-  constructor(private messagesService:MessagesService) { }
+  constructor(private messagesService: MessagesService) { }
 
   ngOnInit() {
-    this.messages = this.messagesService.findAll();
+    this.messagesService.findAll()
+      .subscribe(valeurs => this.messages = valeurs);
   }
 
 }

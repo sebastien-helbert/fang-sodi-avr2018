@@ -8,9 +8,9 @@ import * as moment from 'moment';
   selector: 'hello',
   template: `
     <div class="container">
-      <chat-menu [user]="currentUser"></chat-menu>
-      <chat-messages ></chat-messages>
-      <chat-form [user]="currentUser"></chat-form>
+      <app-menu [user]="currentUser"></app-menu>
+      <app-messages ></app-messages>
+      <app-form [user]="currentUser"></app-form>
 	 </div>`,
   styles: []
 })

@@ -1,7 +1,7 @@
 import {Personne} from './personne';
 
 export class Message {
-  constructor(public text: string, public date: Date, public from?: Personne) {
+  constructor(public id:number, public text: string, public date: Date, public from?: Personne) {
 
   }
 }

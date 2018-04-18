@@ -7,8 +7,9 @@ import { MenuComponent } from './components/menu.component';
 import { FormComponent } from './components/form.component';
 import { MessagesComponent } from './components/messages.component';
 import { MomentModule } from 'ngx-moment';
-import { ReactiveFormsModule } from '@angular/forms'
+import { ReactiveFormsModule } from '@angular/forms';
 import {MessagesService} from './services/messages.service';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,7 @@ import {MessagesService} from './services/messages.service';
     MessagesComponent
   ],
   imports: [
-    BrowserModule, MomentModule, ReactiveFormsModule
+    BrowserModule, MomentModule, ReactiveFormsModule, HttpClientModule
   ],
   providers: [MessagesService],
   bootstrap: [AppComponent]
