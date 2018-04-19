@@ -16,4 +16,8 @@ export class PeopleListComponent implements OnInit {
     this.peopleService.findAll().subscribe(result => this.people = result);
   }
 
+  encodeBase64(value: string): string {
+    return btoa(value);
+  }
+
 }

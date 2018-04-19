@@ -21,7 +21,7 @@ const routes: any = [
     component : PeopleListComponent
   },
   {
-    path: 'people/:id',
+    path: 'people/:base64Id',
     component : PeopleDetailComponent
   }
 ]
