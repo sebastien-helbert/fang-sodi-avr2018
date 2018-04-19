@@ -1,4 +1,5 @@
-import { BrowserModule } from '@angular/platform-browser';
+;
+import { Http404Component } from './components/http404/http404.component'import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 
@@ -28,6 +29,10 @@ const routes: any = [
   {
     path: 'profile',
     component : ProfileComponent
+  },
+  {
+    path: '**',
+    component : Http404Component
   }
 ];
 
@@ -38,7 +43,8 @@ const routes: any = [
     FormComponent,
     MessagesComponent,
     ProfileComponent,
-    ChatComponent
+    ChatComponent,
+    Http404Component
   ],
   imports: [
     BrowserModule, MomentModule, ReactiveFormsModule, HttpClientModule, RouterModule.forRoot(routes)
