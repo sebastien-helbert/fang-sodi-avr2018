@@ -1,3 +1,39 @@
-<p>
- {{url}}
-</p>
+
+
+<a routerLink="..">Back</a>
+<div *ngIf="people">
+	<div>
+		<span i18n>Name</span> : {{people.name}}
+	</div>
+	<div>
+		<span i18n>Gender</span> : {{people.gender}}
+	</div>
+	<div>
+		<span i18n>Mass</span> : {{people.mass}}
+	</div>
+
+	<div>
+		<span i18n>Hair color</span> : {{people.hair_color}}
+	</div>
+
+	<table>
+		<tr>
+			<th>Name</th>
+			<th>Model</th>
+			<th>Crew</th>
+			<th>Length</th>
+		</tr>
+		<tr *ngFor="let starship of peopleStarships">
+			<td >{{starship.name}}</td>
+			<td >{{starship.model}}</td>
+			<td >{{starship.crew}}</td>
+			<td >{{starship.length}}</td>
+		</tr>
+
+	</table>
+	<div>
+	</div>
+</div>
+<div *ngIf="!people">
+	<span i18n>Loading</span>...
+</div>

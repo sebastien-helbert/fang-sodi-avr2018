@@ -15,4 +15,8 @@ export class PeopleService {
       .get('https://swapi.co/api/people/')
       .map(response => response['results']);
   }
+
+  findOne(url: string): Observable<People> {
+    return this.httpClient.get(url);
+  }
 }

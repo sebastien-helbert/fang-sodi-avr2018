@@ -8,6 +8,7 @@ import { PeopleDetailComponent } from './components/people-detail/people-detail.
 import {RouterModule} from '@angular/router';
 import {PeopleService} from './services/people.service';
 import {HttpClientModule} from '@angular/common/http';
+import {StarshipService} from './services/starship.service';
 
 
 const routes: any = [
@@ -34,7 +35,7 @@ const routes: any = [
   imports: [
     BrowserModule, HttpClientModule, RouterModule.forRoot(routes)
   ],
-  providers: [PeopleService],
+  providers: [PeopleService, StarshipService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
