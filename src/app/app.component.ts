@@ -6,19 +6,13 @@ import * as moment from 'moment';
 
 @Component({
   selector: 'hello',
-  template: `
-    <div class="container">
-      <app-menu [user]="currentUser"></app-menu>
-      <app-messages ></app-messages>
-      <app-form [user]="currentUser"></app-form>
-	 </div>`,
+  template: `    
+	  <app-menu [user]="currentUser"></app-menu>
+	  <div class="container">
+      <router-outlet></router-outlet>
+    </div>`,
   styles: []
 })
 export class AppComponent {
   currentUser:Personne = new Personne('Sébastien', 'HELBERT');
-
-  myNumber:number = 0.2345678;
-  myMoment:any = moment();
-
-
 }
