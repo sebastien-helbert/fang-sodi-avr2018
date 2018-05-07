@@ -5,7 +5,7 @@ import {Message} from './model/message';
 import * as moment from 'moment';
 
 @Component({
-  selector: 'hello',
+  selector: 'app-chat',
   template: `    
 	  <app-menu [user]="currentUser"></app-menu>
 	  <div class="container">
