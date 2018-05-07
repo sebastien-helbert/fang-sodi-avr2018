@@ -1,6 +1,8 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {Message} from '../model/message';
 import {MessagesService} from '../services/messages.service';
+import {MqttService} from 'ngx-mqtt';
+import {Subscription} from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-messages',
@@ -22,15 +24,18 @@ import {MessagesService} from '../services/messages.service';
       }
   `]
 })
-export class MessagesComponent implements OnInit {
+export class MessagesComponent implements OnInit, OnDestroy {
+  private messagesSubscription: Subscription;
+  messages: Message[] = [];
 
-  messages: Message[];
-
-  constructor(private messagesService: MessagesService) { }
+  constructor(private messagesService: MessagesService, private mqttService: MqttService) { }
 
   ngOnInit() {
-    this.messagesService.findAll()
-      .subscribe(valeurs => this.messages = valeurs);
+    this.messagesSubscription = this.messagesService.messages.subscribe(val => this.messages.push(val));
+    this.messagesService.loadMessages();
   }
 
+  public ngOnDestroy() {
+    this.messagesSubscription.unsubscribe();
+  }
 }

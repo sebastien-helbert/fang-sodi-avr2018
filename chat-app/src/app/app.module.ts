@@ -1,5 +1,5 @@
-;
-import { Http404Component } from './components/http404/http404.component'import { BrowserModule } from '@angular/platform-browser';
+import { Http404Component } from './components/http404/http404.component';
+import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 
@@ -14,6 +14,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {RouterModule} from '@angular/router';
 import { ProfileComponent } from './components/profile/profile.component';
 import { ChatComponent } from './components/chat/chat.component';
+import {IMqttServiceOptions, MqttModule, MqttService} from 'ngx-mqtt';
 
 
 const routes: any = [
@@ -36,6 +37,12 @@ const routes: any = [
   }
 ];
 
+export const MQTT_SERVICE_OPTIONS: IMqttServiceOptions = {
+  hostname: 'broker.mqttdashboard.com',
+  port: 8000,
+  path: '/mqtt'
+};
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,7 +54,10 @@ const routes: any = [
     Http404Component
   ],
   imports: [
-    BrowserModule, MomentModule, ReactiveFormsModule, HttpClientModule, RouterModule.forRoot(routes)
+    BrowserModule, MomentModule, ReactiveFormsModule, HttpClientModule, RouterModule.forRoot(routes), MqttModule.forRoot({
+      provide: MqttService,
+      useFactory: () => new MqttService(MQTT_SERVICE_OPTIONS)
+    })
   ],
   providers: [MessagesService],
   bootstrap: [AppComponent]
